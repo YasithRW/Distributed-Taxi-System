@@ -4,12 +4,12 @@
 A distributed taxi system created using Kubernetes architecture with service providers Linode and Digital Ocean is a scalable and highly available system that allows users to generate a taxi number, cluster ID, availability, and the hosted server when a GET request is sent through an API.
 
 
-## API Reference (testing a local deployment)
+## API Reference (testing)
 
 #### Get request to find if a taxi is available(localhost)
 
 ```http
-  GET /http://localhost:8080/2
+  GET /194.233.172.85/2
 ```
 
 
@@ -69,8 +69,3 @@ server {
     }
 }
 ```
-
-## Documentation
-
-[Documentation](https://linktodocumentation)
-
