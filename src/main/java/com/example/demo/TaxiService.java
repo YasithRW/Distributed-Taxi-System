@@ -1,11 +1,13 @@
 package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.net.InetAddress;
 import java.util.List;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 @Service
 public class TaxiService {
@@ -14,8 +16,10 @@ public class TaxiService {
     @Autowired
     private TaxiRepository taxiRepository;
 
-    public Taxi getTaxiForUser(int cluster)
-    {
+
+
+
+    public Taxi getTaxiForUser(int cluster) throws UnknownHostException {
         Taxi taxi1 = new Taxi(1L,1,false);
         Taxi taxi2 = new Taxi(2L,1,false);
         Taxi taxi3 =  new Taxi(3L,1,true);
@@ -52,8 +56,19 @@ public class TaxiService {
         }
 
         else{
-            return availableList.get(0);
+            InetAddress ip = InetAddress.getLocalHost();
+            String hostname = ip.getHostName();
+
+
+            Taxi response = availableList.get(0);
+            response.setServerID(String.valueOf(ip));
+            response.setProvider("Linode");
+
+            return response;
+
+
         }
     }
+
 
 }

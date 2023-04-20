@@ -12,6 +12,10 @@ public class Taxi {
 
     private boolean isAvailable;
 
+    private String serverID;
+
+    private String provider;
+
     public Taxi(Long id, int cluster, boolean isAvailable) {
         this.id = id;
         this.cluster = cluster;
@@ -19,6 +23,22 @@ public class Taxi {
     }
 
     public Taxi() {
+    }
+
+    public String getServerID() {
+        return serverID;
+    }
+
+    public void setServerID(String serverID) {
+        this.serverID = serverID;
+    }
+
+    public String getProvider() {
+        return provider;
+    }
+
+    public void setProvider(String hostname) {
+        this.provider = hostname;
     }
 
     public Long getId() {
