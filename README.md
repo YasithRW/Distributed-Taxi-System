@@ -69,3 +69,51 @@ server {
     }
 }
 ```
+
+### Keepalived config files for load balancers
+
+keepalived for master
+
+  ```bash
+vrrp_instance VI_1 {
+    state MASTER        
+    interface eth0  
+    virtual_router_id 51
+    priority 51
+    advert_int 1
+    authentication {
+        auth_type PASS
+        auth_pass 1111
+    }
+    unicast_src_ip  192.168.145.185
+    unicast_peer {
+        192.168.136.134
+    }
+    virtual_ipaddress {
+        194.233.172.85
+    }
+}
+```
+
+keepalived for master
+
+  ```bash
+vrrp_instance VI_1 {
+    state BACKUP        
+    interface eth0
+    virtual_router_id 51
+    priority 50
+    advert_int 1
+    authentication {
+        auth_type PASS
+        auth_pass 1111
+    }
+    unicast_src_ip 192.168.136.134
+    unicast_peer{
+        192.168.145.185
+    }
+    virtual_ipaddress {
+        194.233.172.85
+    }
+}
+```
